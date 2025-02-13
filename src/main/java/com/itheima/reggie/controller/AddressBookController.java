@@ -102,17 +102,4 @@ public class AddressBookController {
         //SQL:select * from address_book where user_id = ? order by update_time desc
         return R.success(addressBookService.list(queryWrapper));
     }
-    @GetMapping("/list2")
-    public R<List<AddressBook>> list2(AddressBook addressBook) {
-        addressBook.setUserId(BaseContext.getCurrentId());
-        log.info("addressBook:{}", addressBook);
-
-        //条件构造器
-        LambdaQueryWrapper<AddressBook> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(null != addressBook.getUserId(), AddressBook::getUserId, addressBook.getUserId());
-        queryWrapper.orderByDesc(AddressBook::getUpdateTime);
-
-        //SQL:select * from address_book where user_id = ? order by update_time desc
-        return R.success(addressBookService.list(queryWrapper));
-    }
 }
