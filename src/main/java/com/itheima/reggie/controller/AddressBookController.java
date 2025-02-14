@@ -9,6 +9,7 @@ import com.itheima.reggie.entity.AddressBook;
 import com.itheima.reggie.service.AddressBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,8 @@ public class AddressBookController {
 
     @Autowired
     private AddressBookService addressBookService;
-
+    @Autowired
+    private CacheManager cacheManager;
     /**
      * 新增
      */
